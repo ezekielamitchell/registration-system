@@ -1,0 +1,3 @@
+/Users/house/code/proj/basic-registration/cmake-build-debug/CMakeFiles/basic_registration.dir
+/Users/house/code/proj/basic-registration/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/house/code/proj/basic-registration/cmake-build-debug/CMakeFiles/rebuild_cache.dir
