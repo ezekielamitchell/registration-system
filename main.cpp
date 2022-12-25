@@ -1,5 +1,6 @@
 #include <iostream>
 #include<string>
+#include<vector>
 
 using namespace std;
 
@@ -31,11 +32,27 @@ struct User {
     string password;
 };
 
+vector<User> users;
+
 User registerUser() {
     User user;
 
+
+
+    users.push_back(user);
     return user;
 }
+
+void accountInfo(User& user) {
+    // print user info
+    cout << "Account Number: " << user.accountNumber << endl;
+    cout << "First Name: " << user.fName << endl;
+    cout << "Last Name: " << user.lName << endl;
+    cout << "Username: " << user.userName << endl;
+    cout << "Password: " << user.password << endl;
+}
+
+// user login
 
 
 int main() {
