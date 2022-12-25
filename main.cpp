@@ -37,9 +37,29 @@ vector<User> users;
 User registerUser() {
     User user;
 
+    cout << "First Name: ";
+    cin >> user.fName;
+    cout << "Last Name: ";
+    cin >> user.lName;
+    cout << "Username: ";
 
+    bool usernameExists = true;
+    while (usernameExists) {
+        cin >> user.userName;
+        usernameExists = false;
+        for (User& i : users) {
+            if (user.userName == i.userName) {
+                usernameExists = true;
+                cout << "Username already exists. Enter a new username: ";
+                break;
+            }
+        }
+    }
 
-    users.push_back(user);
+    cout << "Password: ";
+    cin >> user.password;
+
+    user.accountNumber = to_string(users.size() + 1);
     return user;
 }
 
@@ -60,7 +80,7 @@ int main() {
     while (active) {
         switch (menu()) {
             case 1:
-                cout << 1 << endl;
+                users.push_back(registerUser());
                 break;
             case 2:
                 cout << 2 << endl;
