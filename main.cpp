@@ -1,6 +1,7 @@
 #include <iostream>
 #include<string>
-#include<vector>
+#include<userstor>
+#include<algorithm>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ struct User {
     string password;
 };
 
-vector<User> users;
+userstor<User> users;
 
 User registerUser() {
     User user;
@@ -56,10 +57,14 @@ User registerUser() {
         }
     }
 
-    cout << "Password: ";
+    cout << "Password (min 8 characters):  ";
     cin >> user.password;
+    while (user.password.length() < 8) {
+        cout << "Password must be at least 6 characters. Try again." << endl;
+        cin >> user.password;
+    }
 
-    user.accountNumber = to_string(users.size() + 1);
+    user.accountNumber = to_string(users.size() + 1000);
     return user;
 }
 
@@ -72,8 +77,28 @@ void accountInfo(User& user) {
     cout << "Password: " << user.password << endl;
 }
 
-// user login
+void login() {
+    string username;
+    string password;
 
+    cout << "Username: ";
+    cin >> username;
+
+    cout << "Password: ";
+    cin >> password;
+
+    for (User& user : users) {
+        if (user.userName == username && user.password == password) {
+            accountInfo(user);
+        }
+    }
+
+    if (find(users.begin(), users.end(), ) != users.end()) {
+
+    }
+
+
+}
 
 int main() {
     bool active = true;
@@ -83,7 +108,7 @@ int main() {
                 users.push_back(registerUser());
                 break;
             case 2:
-                cout << 2 << endl;
+                login();
                 break;
             case 3:
                 cout << "exiting systems...";
