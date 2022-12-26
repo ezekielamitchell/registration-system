@@ -1,9 +1,21 @@
 #include <iostream>
 #include<string>
-#include<userstor>
+#include<vector>
 #include<algorithm>
 
 using namespace std;
+
+struct User {
+    string accountNumber;
+    string fName;
+    string lName;
+    string userName;
+    string password;
+};
+
+vector<User> users;
+
+User account;
 
 int menu() {
     int input;
@@ -24,16 +36,6 @@ int menu() {
 
     return input;
 }
-
-struct User {
-    string accountNumber;
-    string fName;
-    string lName;
-    string userName;
-    string password;
-};
-
-userstor<User> users;
 
 User registerUser() {
     User user;
@@ -65,6 +67,7 @@ User registerUser() {
     }
 
     user.accountNumber = to_string(users.size() + 1000);
+    users.push_back(user);
     return user;
 }
 
@@ -77,7 +80,7 @@ void accountInfo(User& user) {
     cout << "Password: " << user.password << endl;
 }
 
-void login() {
+bool login() {
     string username;
     string password;
 
@@ -87,32 +90,72 @@ void login() {
     cout << "Password: ";
     cin >> password;
 
+    // check if user exist in users vector
     for (User& user : users) {
         if (user.userName == username && user.password == password) {
-            accountInfo(user);
+            account = user;
+            cout << "Login successful!" << endl;
+            return true;
         }
     }
 
-    if (find(users.begin(), users.end(), ) != users.end()) {
-
-    }
-
-
+    cout << "Login failed. Username or password is incorrect." << endl;
+    return false;
 }
 
+void userMenu() {
+    int input;
+
+    cout << "*----- User Menu -----*" << endl;
+    cout << "1) Account Info" << endl;
+    cout << "2) Log Out" << endl;
+    cout << "3) exit program" << endl;
+    cout << "enter option: ";
+    cin >> input;
+
+    // invalid user input
+    if (std::cin.fail() || !(input == 1 || input == 2 || input == 3)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cerr << "Invalid input; please enter 1, 2, or 0" <<endl;
+    }
+
+    bool loggedIn = true;
+    while (true) {
+        if (input == 1) {
+            accountInfo(account);
+            userMenu();
+            break;
+        } else if (input == 2) {
+            cout << "Logging out..." << endl;
+            loggedIn = false;
+            break;
+        } else if (input == 3) {
+            cout << "Exiting program..." << endl;
+            exit(0);
+        }
+    }
+}
+
+// todo: fix name enter : allow spaces in name
+// todo: fix login
+
 int main() {
-    bool active = true;
-    while (active) {
+    while (true) {
         switch (menu()) {
             case 1:
                 users.push_back(registerUser());
                 break;
             case 2:
-                login();
+                if (login()) {
+                    userMenu();
+                } else {
+                    menu();
+                }
                 break;
             case 3:
                 cout << "exiting systems...";
-                active = false;
+                exit(0);
         }
 
     }
