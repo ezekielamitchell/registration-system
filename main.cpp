@@ -40,12 +40,17 @@ int menu() {
 User registerUser() {
     User user;
 
-    cout << "First Name: ";
-    cin >> user.fName;
-    cout << "Last Name: ";
-    cin >> user.lName;
-    cout << "Username: ";
+    // Read the first name
+    cout << "First name: ";
+    cin.ignore(1, '\n');
+    getline(cin, user.fName);
 
+
+    // Read the last name
+    cout << "Last name: ";
+    getline(cin, user.lName);
+
+    cout << "Username: ";
     bool usernameExists = true;
     while (usernameExists) {
         cin >> user.userName;
@@ -89,6 +94,7 @@ bool login() {
 
     cout << "Password: ";
     cin >> password;
+    cin.ignore(1, '\n');
 
     // check if user exist in users vector
     for (User& user : users) {
