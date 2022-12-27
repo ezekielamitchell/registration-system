@@ -143,9 +143,6 @@ void userMenu() {
     }
 }
 
-// todo: fix name enter : allow spaces in name
-// todo: fix login
-
 int main() {
     while (true) {
         switch (menu()) {
