@@ -133,8 +133,8 @@ void userMenu() {
             userMenu();
             break;
         } else if (input == 2) {
-            cout << "Logging out..." << endl;
             loggedIn = false;
+            cout << "Logged out successfully!" << endl;
             break;
         } else if (input == 3) {
             cout << "Exiting program..." << endl;
@@ -153,15 +153,13 @@ int main() {
                 if (login()) {
                     userMenu();
                 } else {
-                    menu();
+                    continue;
                 }
                 break;
             case 3:
-                cout << "exiting systems...";
+                cout << "Exiting systems...";
                 exit(0);
         }
-
     }
-    return 0;
 }
 
