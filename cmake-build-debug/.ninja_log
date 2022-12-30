@@ -1,12 +1,4 @@
 # ninja log v5
-3	695	1672095944108249625	CMakeFiles/basic_registration.dir/main.cpp.o	a60c29eaee95047e
-695	764	1672095944181207704	basic_registration	f8a89c52adf3157
-1	123	1672104577744633849	build.ninja	e6dfc600dd6ca859
-2	700	1672104578454812623	CMakeFiles/basic_registration.dir/main.cpp.o	a60c29eaee95047e
-700	765	1672104578523060608	basic_registration	f8a89c52adf3157
-3	647	1672104646117238027	CMakeFiles/basic_registration.dir/main.cpp.o	a60c29eaee95047e
-648	709	1672104646182270047	basic_registration	f8a89c52adf3157
-3	633	1672104772686109577	CMakeFiles/basic_registration.dir/main.cpp.o	a60c29eaee95047e
-633	690	1672104772745019124	basic_registration	f8a89c52adf3157
 3	635	1672104815320773398	CMakeFiles/basic_registration.dir/main.cpp.o	a60c29eaee95047e
+1	123	1672244119054056667	build.ninja	e6dfc600dd6ca859
 635	693	1672104815381289124	basic_registration	f8a89c52adf3157
